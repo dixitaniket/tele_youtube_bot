@@ -45,14 +45,15 @@ def url_checker(message):
 def internal_url_handler(message):
     print(message.entities[0].type)
     bot.reply_to(message,"sending audio to chat")
-    status=internal_youtube_routine(message.text)
-    if (status==False):
+    filename=internal_youtube_routine(message.text)
+    if (filename==False):
         bot.reply_to(message,"sorry some error occured while downloading")
     else:
-        audio=open(status+".webm","rb")
+        audio=open(filename,"rb")
         bot.send_audio(message.chat.id,audio)
         bot.reply_to(message,"delivered boss")
-        os.remove(status+".webm")
+        audio.close()
+        os.remove(filename)
 
 
 bot.polling()
