@@ -13,6 +13,7 @@ def send_message(message):
     print(chat_id)
     bot.reply_to(message,"hello")
     #audio=open("/home/aniket/Music/Dylan Sitts - So Free.webm","rb")
+
     #bot.send_audio(chat_id,audio)
 
 
@@ -44,16 +45,25 @@ def url_checker(message):
 @bot.message_handler(func=url_checker)
 def internal_url_handler(message):
     print(message.entities[0].type)
-    bot.reply_to(message,"sending audio to chat")
-    filename=internal_youtube_routine(message.text)
-    if (filename==False):
-        bot.reply_to(message,"sorry some error occured while downloading")
-    else:
-        audio=open(filename,"rb")
-        bot.send_audio(message.chat.id,audio)
-        bot.reply_to(message,"delivered boss")
-        audio.close()
-        os.remove(filename)
+    try:
+        bot.reply_to(message,"sending audio to chat")
+        filename=internal_youtube_routine(message.text)
+        if (filename==False):
+            bot.reply_to(message,"sorry some error occured while downloading")
+        else:
+            audio=open(filename,"rb")
+            bot.send_audio(message.chat.id,audio)
+            bot.reply_to(message,"delivered boss")
+            audio.close()
+            os.remove(filename)
+    except Exception as e:
+        print(e)
+        bot.reply_to(message,"shit")
 
-
-bot.polling()
+import time
+while True:
+    try:
+        bot.polling(none_stop=True,timeout=200)
+    except Exception as e:
+        print(e)
+        time.sleep(10)
