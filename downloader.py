@@ -12,6 +12,7 @@ def internal_youtube_routine(endpoint):
         new_filename=filename[:len(filename)-5]+".mp3"
         #print(new_filename)
         os.rename(filename,filename[:len(filename)-5]+".mp3")
+        print("internal download complete")
         return new_filename
 
         
