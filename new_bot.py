@@ -1,4 +1,4 @@
-# 1407230169:AAHmqDu4wCjp6Cl46Ipo_8l6qKobUOXr5z0
+
 from telegram.ext import Updater
 from telegram.ext import CommandHandler,MessageHandler
 from telegram.ext.filters import Filters
@@ -7,7 +7,7 @@ import os
 # import sqlite3
 
 # conn=sqlite3.connect("userList.db")
-updater =Updater(token="1407230169:AAHmqDu4wCjp6Cl46Ipo_8l6qKobUOXr5z0",use_context=True,workers=2)
+updater =Updater(token="",use_context=True,workers=2)
 
 dispatcher=updater.dispatcher
 
