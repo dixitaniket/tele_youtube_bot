@@ -2,7 +2,7 @@ import telebot
 from downloader import internal_youtube_routine
 import os
 
-bot =telebot.TeleBot("1407230169:AAHmqDu4wCjp6Cl46Ipo_8l6qKobUOXr5z0", parse_mode=None)
+bot =telebot.TeleBot("", parse_mode=None)
 
 
 @bot.message_handler(commands=["start"])
